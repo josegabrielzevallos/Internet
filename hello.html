@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<style>
+.caja{
+color: white;
+border: 2px dashed yellow;
+margin-bottom: 5px;
+text-align: center;
+}
+.subtitulo{
+color:yellow;
+font-size: 20px;
+font-family: Arial;
+}
+		</style>
+		<script>
+			function funcion1(){			
+			var nom = document.getElementById("nombre")
+			var caja = document.getElementById("caja");
+			caja.innerHTML = "Hola " + nom.value + "!";
+			alert(nom.innerText);
+			
+			}
+		</script>
+		<title> Hello world </title>
+	</head>
+	<body style="background-color: black;"> 
+		<h1> TEMA 1 </h1>
+		<div class= "caja" id="caja" > Hola mundooooooo! </div>
+		<div class= "caja subtitulo" > 
+			<input type="text" id="nombre" value="Juan Perez"/> 
+			<button onclick="funcion1()">Go</button> 
+		</div>		
+	</body>
+	<footer> 
+		all rights...
+	</footer>
+
+
+</html>
