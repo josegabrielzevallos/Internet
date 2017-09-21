@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <script>
+  
+  i=0;
+var alumno = {
+ "nombre" : "Juan",
+ "edad" : 17,
+ "cursos": [
+   {
+     "codigo" : "A34",
+	 "nombre" : "Algoritmos"
+   },
+   {
+     "codigo" : "B34",
+	 "nombre" : "Base de Datos"
+   }
+ ],
+ "direccion" : {
+   "tipo": "Calle"
+ }
+};
+function verResultado() {
+  var out = document.getElementById("output");
+  var table = document.createElement("TABLE");
+  var trNombre = document.createElement("TR");
+  var trEdad = document.createElement("TR");
+  var trCursos = document.createElement("TR");
+  table.border = "1";
+  var td1 = document.createElement("TD");
+  var td2 = document.createElement("TD");
+  td1.innerText = "Nombre:";
+  td2.innerText = alumno.nombre;
+  trNombre.appendChild(td1);
+  trNombre.appendChild(td2);
+  td1 = document.createElement("TD");
+  td2 = document.createElement("TD");
+  td1.innerText = "Edad:";
+  td2.innerText = alumno.edad;
+  trEdad.appendChild(td1);
+  trEdad.appendChild(td2);
+  td1 = document.createElement("TD");
+  td2 = document.createElement("TD");
+  td1.innerText = "Cursos:";
+  var ulCursos = document.createElement("UL");
+  for (i=0; i<alumno.cursos.length; i++) {
+	var liCurso = document.createElement("LI");
+	liCurso.innerHTML = alumno.cursos[i].nombre;
+	ulCursos.appendChild(liCurso);
+	liCurso.id = "curso-" + i;
+  }
+  td2.appendChild(ulCursos);
+  trCursos.appendChild(td1);
+  trCursos.appendChild(td2);
+  table.appendChild(trNombre);
+  table.appendChild(trEdad);
+  table.appendChild(trCursos);
+  out.innerHTML = "";
+  out.appendChild(table);
+}
+  var btn = document.createElement("BUTTON");
+  var btn2 = document.createElement("BUTTON");
+function add(){
+  var out2 = document.getElementById("output2");
+  document.getElementById("1").innerText = "Codigo  ";
+  document.getElementById("2").innerText = "Nombre  ";
+  div = document.getElementById("3");
+  div = document.getElementById("4");
+  btn.innerHTML = "guardar";
+  btn2.innerHTML = "cancelar";
+  //document.getElementById("3").innerText = "Nombre  ";
+  div.appendChild(btn);
+  div.appendChild(btn2);
+  guar(btn);
+  borr(btn2);
+}
+function guar(botom){
+    botom.onclick = function(event)
+    {
+      
+      a = document.getElementById("a1");
+      b = document.getElementById("b1");
+    
+    alumno.cursos.push({"codigo" : a.value, "nombre" : b.value});
+ 
+      verResultado() ;
+    }
+  };
+function borr(botom){
+    botom.onclick = function(event)
+    {
+      
+      location.reload();
+    };
+  };
+  </script>
+
+ </head>
+
+ <body>
+   <button onclick="verResultado()">Ver Resultado</button>
+
+   <button onclick="add()">Agregar Curso</button>
+
+
+
+
+   <div id="output" style="margin: 10px; padding: 5px;"></div>
+   <div id="output2" style="margin: 10px; padding: 5px;"></div>
+
+  <div id="1"></div>
+  <input type ="text" id="a1" />
+  <div id="2"></div>
+  <input type ="text" id="b1" />
+  <div id="3"></div>
+  <div id="4"></div>
+
+
+ </body>
+</html>
