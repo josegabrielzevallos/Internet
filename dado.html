@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head  tag style ="width: 30px; height: 30px;">
+	<script >
+		function aleatorio(inferior,superior){
+numPosibilidades = superior - inferior
+aleator = Math.random() * numPosibilidades
+aleator = Math.floor(aleator)
+return  aleator + 1
+}
+
+
+function calcula(){
+document.getElementById("numero").value=aleatorio(1,7);
+}
+	</script>
+	<title>Dado</title>
+</head>
+<body>
+	<input type="button" onclick="calcula();" value="Calcula">      <input id="numero" type="text">
+
+<table id="tbl" border="2" style=" margin: 10px;width: 30px; height: 30px;">
+	<tr>
+		<td id="00"></td>
+		<td id="01"></td>
+		<td id="02"></td>
+		<tr/><tr>
+		<td id="10"></td>
+		<td id="11"></td>
+		<td id="12"></td>
+		<tr/><tr>
+		<td id="20"></td>
+		<td id="21"></td>
+		<td id="22"></td>
+	</tr>
+</table>
+
+</body>
+</html>
