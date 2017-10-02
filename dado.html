@@ -1,39 +1,169 @@
-<!DOCTYPE html>
 <html>
-<head  tag style ="width: 30px; height: 30px;">
-	<script >
-		function aleatorio(inferior,superior){
-numPosibilidades = superior - inferior
-aleator = Math.random() * numPosibilidades
-aleator = Math.floor(aleator)
-return  aleator + 1
-}
-
-
-function calcula(){
-document.getElementById("numero").value=aleatorio(1,7);
-}
-	</script>
-	<title>Dado</title>
-</head>
-<body>
-	<input type="button" onclick="calcula();" value="Calcula">      <input id="numero" type="text">
-
-<table id="tbl" border="2" style=" margin: 10px;width: 30px; height: 30px;">
-	<tr>
-		<td id="00"></td>
-		<td id="01"></td>
-		<td id="02"></td>
-		<tr/><tr>
-		<td id="10"></td>
-		<td id="11"></td>
-		<td id="12"></td>
-		<tr/><tr>
-		<td id="20"></td>
-		<td id="21"></td>
-		<td id="22"></td>
-	</tr>
-</table>
-
-</body>
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="content-type" /> 
+		<meta charset="utf-8" />
+        <style>
+            button{
+                width: 84px;
+                font-size: 15px;
+                margin-bottom: 5px;
+            }
+            table{
+                border-style: solid;
+                border-width: 2px;
+            }
+            td{
+                text-align: center;
+                width: 30px;
+                height: 30px;
+                border-style: solid;
+                border-width: 1px;
+            }
+        </style>
+		<script type="text/javascript">
+            var turno = 1;
+			function Lanzar(){
+                ResetearDado();
+				var valor = Math.floor(Math.random()* (6) + 1);
+                switch(valor){
+                    case 1:
+                        for(var i=0; i<9; i++){
+                            if(i==4){
+                                document.getElementById(i).innerHTML = "O"; 
+                            }
+                            else
+                                document.getElementById(i).innerHTML = " "; 
+                        }
+                        break;
+                    case 2:
+                        for(var i=0; i<9; i++){
+                            if(i==0)
+                                document.getElementById(i).innerHTML = "O"; 
+                            else if(i==8)
+                                document.getElementById(i).innerHTML = "O";
+                            else
+                                document.getElementById(i).innerHTML = " "; 
+                        }
+                        break;
+                    case 3:
+                        for(var i=0; i<9; i++){
+                            if(i==0)
+                                document.getElementById(i).innerHTML = "O";
+                            else if(i==4)
+                                document.getElementById(i).innerHTML = "O";
+                            else if(i==8)
+                                document.getElementById(i).innerHTML = "O";
+                            else
+                                document.getElementById(i).innerHTML = " "; 
+                        }
+                        break;
+                    case 4:
+                        for(var i=0; i<9; i++){
+                            if(i==0)
+                                document.getElementById(i).innerHTML = "O";
+                            else if(i==2)
+                                document.getElementById(i).innerHTML = "O";
+                            else if(i==6)
+                                document.getElementById(i).innerHTML = "O";
+                            else if(i==8)
+                                document.getElementById(i).innerHTML = "O";
+                            else
+                                document.getElementById(i).innerHTML = " "; 
+                        }
+                        break;
+                    case 5:
+                        for(var i=0; i<9; i++){
+                            if(i==0)
+                                document.getElementById(i).innerHTML = "O"; 
+                            else if(i==2)
+                                document.getElementById(i).innerHTML = "O";
+                            else if(i==4)
+                                document.getElementById(i).innerHTML = "O";
+                            else if(i==6)
+                                document.getElementById(i).innerHTML = "O";
+                            else if(i==8)
+                                document.getElementById(i).innerHTML = "O";
+                            else
+                                document.getElementById(i).innerHTML = " "; 
+                        }
+                        break;
+                    case 6:
+                        for(var i=0; i<9; i++){
+                            if(i==0)
+                                document.getElementById(i).innerHTML = "O"; 
+                            else if(i==2)
+                                document.getElementById(i).innerHTML = "O";
+                            else if(i==3)
+                                document.getElementById(i).innerHTML = "O";
+                            else if(i==5)
+                                document.getElementById(i).innerHTML = "O";
+                            else if(i==6)
+                                document.getElementById(i).innerHTML = "O";
+                            else if(i==8)
+                                document.getElementById(i).innerHTML = "O";
+                            else
+                                document.getElementById(i).innerHTML = " "; 
+                        }
+                        break;
+                    }
+                if(turno == 1)
+                    document.getElementById("r1").innerHTML = valor;
+                if(turno == 2){
+                    document.getElementById("r2").innerHTML = valor; 
+                    if(document.getElementById("r1").innerHTML > document.getElementById("r2").innerHTML)
+                        document.getElementById("rW").innerHTML = "J1";
+                    if(document.getElementById("r1").innerHTML < document.getElementById("r2").innerHTML)
+                        document.getElementById("rW").innerHTML = "J2";
+                    if(document.getElementById("r1").innerHTML == document.getElementById("r2").innerHTML)
+                        document.getElementById("rW").innerHTML = "=";
+                    
+                }
+                turno++;
+                if(turno == 3)
+                    turno = 1;
+                }
+                function ResetearDado(){
+                    for(var i=0;i<9;i++){
+                        document.getElementById(i).innerHTML = " ";
+                    }
+                    if(turno == 1){
+                        document.getElementById("r1").innerHTML = "";
+                        document.getElementById("r2").innerHTML = "";
+                        document.getElementById("rW").innerHTML = "";
+                    }
+                }
+		</script>
+	</head>
+	<body>
+		<button id="Inicio" onClick="Lanzar();" class="Lanzar">Lanzar Dado</button>
+		<table>
+            <tr>
+				<td id="p1" colspan="2">Jugador 1</td>
+				<td id="r1">?</td>
+			</tr>
+            <tr>
+				<td id="p2" colspan="2">Jugador 2</td>
+				<td id="r2">?</td>
+			</tr>
+			<tr>
+				<td id="0"> </td>
+				<td id="1"> </td>
+				<td id="2"> </td>
+			</tr>
+			<tr>
+				<td id="3"> </td>
+				<td id="4"> </td>
+				<td id="5"> </td>
+			</tr>
+			<tr>
+				<td id="6"> </td>
+				<td id="7"> </td>
+				<td id="8"> </td>
+			</tr>
+            <tr>				
+				<td id="winner" colspan="2">GaNador</td>
+                <td id="rW">?</td>
+			</tr>
+		</table>
+	</body>
 </html>
